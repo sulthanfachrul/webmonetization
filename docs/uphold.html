@@ -1,0 +1,205 @@
+<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Uphold · Web Monetization</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="Use Uphold to have your earnings paid out in over 60 supported currencies, including fiat and crypto. See [Uphold&#x27;s site](https://uphold.com/en/transparency) for more information."/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Uphold · Web Monetization"/><meta property="og:type" content="website"/><meta property="og:url" content="https://webmonetization.org/"/><meta property="og:description" content="Use Uphold to have your earnings paid out in over 60 supported currencies, including fiat and crypto. See [Uphold&#x27;s site](https://uphold.com/en/transparency) for more information."/><meta property="og:image" content="https://webmonetization.org/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/fav-webmonetization.png"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/custom.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/wm-icon.svg" alt="Web Monetization"/><h2 class="headerTitleWithLogo">Web Monetization</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/getting-started" target="_self">Docs</a></li><li class=""><a href="/specification.html" target="_self">Specification</a></li><li class=""><a href="https://discourse.wicg.io/t/proposal-web-monetization-a-new-revenue-model-for-the-web/3785" target="_self">WICG Forum</a></li><li class=""><a href="https://github.com/interledger/webmonetization.org" target="_self">GitHub</a></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>Wallets</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Overview</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/getting-started">Quick start guide</a></li><li class="navListItem"><a class="navItem" href="/docs/api">JavaScript API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/exclusive-content">Exclusive content</a></li><li class="navListItem"><a class="navItem" href="/docs/remove-ads">Remove ads</a></li><li class="navListItem"><a class="navItem" href="/docs/counter">Micropayment counter</a></li><li class="navListItem"><a class="navItem" href="/docs/probabilistic-rev-sharing">Probabilistic revenue sharing</a></li><li class="navListItem"><a class="navItem" href="/docs/start-stop">Start/stop monetization</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Explainer</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/explainer">Web Monetization</a></li><li class="navListItem"><a class="navItem" href="/docs/receiving">Receiving payments</a></li><li class="navListItem"><a class="navItem" href="/docs/sending">Sending payments</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Wallets</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/ilp-wallets">Digital wallets</a></li><li class="navListItem"><a class="navItem" href="/docs/gatehub">GateHub</a></li><li class="navListItem"><a class="navItem" href="/docs/stronghold">Stronghold</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/uphold">Uphold</a></li><li class="navListItem"><a class="navItem" href="/docs/xrptipbot">XRP Tipbot</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">More</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/specification">Specification</a></li><li class="navListItem"><a class="navItem" href="/docs/glossary">Glossary</a></li><li class="navListItem"><a class="navItem" href="/docs/resources">External resources</a></li></ul></div></div></section></div><script>
+            var coll = document.getElementsByClassName('collapsible');
+            var checkActiveCategory = true;
+            for (var i = 0; i < coll.length; i++) {
+              var links = coll[i].nextElementSibling.getElementsByTagName('*');
+              if (checkActiveCategory){
+                for (var j = 0; j < links.length; j++) {
+                  if (links[j].classList.contains('navListItemActive')){
+                    coll[i].nextElementSibling.classList.toggle('hide');
+                    coll[i].childNodes[1].classList.toggle('rotate');
+                    checkActiveCategory = false;
+                    break;
+                  }
+                }
+              }
+
+              coll[i].addEventListener('click', function() {
+                var arrow = this.childNodes[1];
+                arrow.classList.toggle('rotate');
+                var content = this.nextElementSibling;
+                content.classList.toggle('hide');
+              });
+            }
+
+            document.addEventListener('DOMContentLoaded', function() {
+              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
+              createToggler('#tocToggler', 'body', 'tocActive');
+
+              var headings = document.querySelector('.toc-headings');
+              headings && headings.addEventListener('click', function(event) {
+                var el = event.target;
+                while(el !== headings){
+                  if (el.tagName === 'A') {
+                    document.body.classList.remove('tocActive');
+                    break;
+                  } else{
+                    el = el.parentNode;
+                  }
+                }
+              }, false);
+
+              function createToggler(togglerSelector, targetSelector, className) {
+                var toggler = document.querySelector(togglerSelector);
+                var target = document.querySelector(targetSelector);
+
+                if (!toggler) {
+                  return;
+                }
+
+                toggler.onclick = function(event) {
+                  event.preventDefault();
+
+                  target.classList.toggle(className);
+                };
+              }
+            });
+        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Uphold</h1></header><article><div><span><p>Use Uphold to have your earnings paid out in over 60 supported currencies, including fiat and crypto. See <a href="https://uphold.com/en/transparency">Uphold's site</a> for more information.</p>
+<p>Opening an Uphold account only takes a few minutes. They collect your legal name, date of birth, and phone number. You don't have to verify your identity until you're ready to withdraw your funds, but you can do it earlier if you want. See their <a href="https://support.uphold.com/hc/en-us/articles/202766795">help article</a> for more information.</p>
+<h2><a class="anchor" aria-hidden="true" id="sign-up"></a><a href="#sign-up" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sign up</h2>
+<p>You can sign up through Uphold's app or website.</p>
+<ol>
+<li><p>Download and install the Uphold app or visit <a href="https://uphold.com/signup">https://uphold.com/signup</a>.</p></li>
+<li><p>In the app, tap <strong>Sign Up</strong> on the launch screen.</p></li>
+</ol>
+<p><img src="assets/uphold/upholdSignUp01.png" height="500"></p>
+<ol start="3">
+<li>Complete all fields and accept Uphold's Terms of Service and Privacy Policy.</li>
+</ol>
+<blockquote>
+<p>Uphold is in the process of obtaining a BitLicense in the state of New York. Until the BitLicense is issued they cannot support cryptocurrency transactions in New York. <strong>You can still set up an account and claim funds in a supported currency, such as USD.</strong></p>
+</blockquote>
+<p><img src="assets/uphold/upholdSignUp02.png" height="500"></p>
+<ol start="4">
+<li>If you're signing up through the website, select Individual as the account type.</li>
+</ol>
+<p><img src="assets/uphold/upholdWebSignUp01.png" height="500"></p>
+<ol start="5">
+<li><p>Proceed to the next screen.</p></li>
+<li><p>Complete all fields, certify your details, then proceed to the next screen.</p></li>
+</ol>
+<p><img src="assets/uphold/upholdSignUp03.png" height="500"></p>
+<ol start="7">
+<li>Check your email and confirm your email address.</li>
+</ol>
+<p><img src="assets/uphold/upholdSignUp04.png" height="500"></p>
+<ol start="8">
+<li><p>When confirmed, the app and website refresh.</p>
+<p><strong>App</strong>
+<img src="assets/uphold/upholdSignUp05.png" height="500"></p>
+<p><strong>Website</strong>
+<img src="assets/uphold/upholdWebSignUp02.png" width="600"></p></li>
+<li><p>Select <strong>Fund my account</strong>, then see the next section.</p></li>
+</ol>
+<h2><a class="anchor" aria-hidden="true" id="set-up-your-account-to-receive-interledger-payments"></a><a href="#set-up-your-account-to-receive-interledger-payments" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Set up your account to receive Interledger payments</h2>
+<h3><a class="anchor" aria-hidden="true" id="app"></a><a href="#app" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App</h3>
+<ol>
+<li>If you're still in the Sign Up flow, tap <strong>Fund my account</strong>. If you're on the Portfolio screen, tap <strong>Transact</strong> in the toolbar.</li>
+</ol>
+<p><img src="assets/uphold/upholdSetUp01.png" height="500"></p>
+<ol start="2">
+<li><p>Tap the <strong>From</strong> menu.</p></li>
+<li><p>Scroll to the bottom of the list and tap <strong>Interledger</strong>.</p></li>
+</ol>
+<p><img src="assets/uphold/upholdSetUp02.png" height="500"></p>
+<ol start="4">
+<li>Tap <strong>I agree</strong> and <strong>Continue</strong>.</li>
+</ol>
+<p><img src="assets/uphold/upholdSetUp03.png" height="500"></p>
+<ol start="5">
+<li>Select the type of currency you want your earnings paid out in by tapping the <strong>To</strong> menu.</li>
+</ol>
+<p><img src="assets/uphold/upholdSetUp04.png" height="500"></p>
+<ol start="6">
+<li>Tap <strong>Done</strong>.</li>
+</ol>
+<h3><a class="anchor" aria-hidden="true" id="website"></a><a href="#website" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Website</h3>
+<ol>
+<li><p>If you're still on the dashboard with the Fund My Account overlay, click <strong>Fund my account</strong> then proceed to step 5.</p></li>
+<li><p>If you don't have the overlay on the dashboard, click <strong>Add card/currency</strong>.</p></li>
+</ol>
+<p><img src="assets/uphold/upholdWebAddCard01.png" width="600"></p>
+<ol start="3">
+<li><p>Enter a name for your card.</p></li>
+<li><p>Select the currency you want your earnings pay out in and click <strong>Create</strong>.</p></li>
+</ol>
+<p><img src="assets/uphold/upholdWebAddCard02.png" height="300"></p>
+<ol start="5">
+<li>Click <strong>Fund from Interledger Payment Pointer</strong>.</li>
+</ol>
+<p><img src="assets/uphold/upholdWebAddCard03.png" width="600"></p>
+<ol start="6">
+<li>Click <strong>Generate a payment pointer</strong>.</li>
+</ol>
+<p><img src="assets/uphold/upholdWebAddCard04.png" width="600"></p>
+<p><img src="assets/uphold/upholdWebAddCard05.png" width="600"></p>
+<h2><a class="anchor" aria-hidden="true" id="view-activity-and-claim-funds"></a><a href="#view-activity-and-claim-funds" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>View activity and claim funds</h2>
+<h3><a class="anchor" aria-hidden="true" id="app-1"></a><a href="#app-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App</h3>
+<p>The app shows incoming activity in real time. You can watch the payment streams by tapping <strong>Activity</strong> from the toolbar.</p>
+<p><img src="assets/uphold/upholdClaim01.png" height="500"></p>
+<p>You can tap any activity that shows on the screen to see more details. When you've received the minimum amount required to claim the funds, the <strong>Claim funds</strong> button becomes active.</p>
+<p><img src="assets/uphold/upholdClaim02.png" height="500"></p>
+<p>Uphold will claim funds on your behalf every hour as long as you've received a claimable amount. The amount varies based on currency. For example, you must have at least $0.01 before you can claim a USD payment. After funds are claimed, the transaction's status changes to Completed.</p>
+<p><img src="assets/uphold/upholdClaim03.png" height="500"></p>
+<p>When claimed, the transaction shows as deposited on the Activity screen.</p>
+<p><img src="assets/uphold/upholdClaim04.png" height="500"></p>
+<h3><a class="anchor" aria-hidden="true" id="website-1"></a><a href="#website-1" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Website</h3>
+<p>Unlike the app, the website <strong>does not</strong> allow you to view incoming payments in real time.</p>
+<p>An hour after you've received at least the minimum claimable amount, Uphold will deposit the amount to your account. The amount varies based on currency. For example, Uphold will not deposit an amount in USD that's less than $0.01.</p>
+<p>On the dashboard, click <strong>Activity</strong> to see all activity or click a specific card to see activity for that card.</p>
+<p><img src="assets/uphold/upholdWebActivity01.png" width="600"></p>
+<p><img src="assets/uphold/upholdWebActivity02.png" width="600"></p>
+<p>Click a transaction to see more details.</p>
+<p><img src="assets/uphold/upholdWebActivity03.png" width="600"></p>
+<h2><a class="anchor" aria-hidden="true" id="find-your-payment-pointer"></a><a href="#find-your-payment-pointer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Find your payment pointer</h2>
+<h3><a class="anchor" aria-hidden="true" id="app-2"></a><a href="#app-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>App</h3>
+<p>If you've already received a payment, you can find your payment pointer by tapping the card on the Portfolio screen. If you haven't received a payment yet, you can find your pointer through the Transact screen.</p>
+<h4><a class="anchor" aria-hidden="true" id="portfolio-screen"></a><a href="#portfolio-screen" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Portfolio screen</h4>
+<ol>
+<li>Tap the card on the Portfolio screen. In this example, you'd tap <strong>USD account</strong>.</li>
+</ol>
+<p><img src="assets/uphold/upholdPortfolioWithCard.png" height="500"></p>
+<ol start="2">
+<li>Tap <strong>...</strong> in the upper right, then tap <strong>Interledger payment pointer</strong>.</li>
+</ol>
+<p><img src="assets/uphold/upholdPaymentPointer01.png" height="500"></p>
+<ol start="3">
+<li>Copy your payment pointer, then tap <strong>Done</strong>.</li>
+</ol>
+<p><img src="assets/uphold/upholdPaymentPointer02.png" height="500"></p>
+<h4><a class="anchor" aria-hidden="true" id="transact-screen"></a><a href="#transact-screen" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Transact screen</h4>
+<p>The Portfolio screen won't show a card until you receive a payment. In the meantime, you can find your payment pointer through the Transact screen.</p>
+<ol>
+<li>Tap <strong>Transact</strong> in the toolbar.</li>
+</ol>
+<p><img src="assets/uphold/upholdPortfolioWithoutCard.png" height="500"></p>
+<ol start="2">
+<li>Tap <strong>From</strong>.</li>
+</ol>
+<p><img src="assets/uphold/upholdSetUp01.png" height="500"></p>
+<ol start="3">
+<li>Scroll down and tap <strong>Interledger</strong></li>
+</ol>
+<p><img src="assets/uphold/upholdSetUp02.png" height="500"></p>
+<ol start="4">
+<li>Tap <strong>I agree</strong> and <strong>Continue</strong>.</li>
+</ol>
+<p><img src="assets/uphold/upholdSetUp03.png" height="500"></p>
+<ol start="5">
+<li>Copy your payment pointer, then tap <strong>Done</strong>.</li>
+</ol>
+<p><img src="assets/uphold/upholdSetUp04.png" height="500"></p>
+<h3><a class="anchor" aria-hidden="true" id="website-2"></a><a href="#website-2" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Website</h3>
+<ol>
+<li>From the dashboard, select your Interledger card.</li>
+</ol>
+<p><img src="assets/uphold/upholdWebDashboardCard.png" width="600"></p>
+<ol start="2">
+<li>Click <strong>Add Funds</strong>, then select <strong>Fund from Interledger Payment Pointer</strong>.</li>
+</ol>
+<p><img src="assets/uphold/upholdWebAddCard03.png" width="600"></p>
+<ol start="3">
+<li>Copy your payment pointer.</li>
+</ol>
+<p><img src="assets/uphold/upholdWebAddCard05.png" width="600"></p>
+</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/stronghold"><span class="arrow-prev">← </span><span>Stronghold</span></a><a class="docs-next button" href="/docs/xrptipbot"><span>XRP Tipbot</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"><ul class="toc-headings"><li><a href="#sign-up">Sign up</a></li><li><a href="#set-up-your-account-to-receive-interledger-payments">Set up your account to receive Interledger payments</a><ul class="toc-headings"><li><a href="#app">App</a></li><li><a href="#website">Website</a></li></ul></li><li><a href="#view-activity-and-claim-funds">View activity and claim funds</a><ul class="toc-headings"><li><a href="#app-1">App</a></li><li><a href="#website-1">Website</a></li></ul></li><li><a href="#find-your-payment-pointer">Find your payment pointer</a><ul class="toc-headings"><li><a href="#app-2">App</a></li><li><a href="#website-2">Website</a></li></ul></li></ul></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div><h5>WebMonetization.org</h5></div><div><h5>Navigation</h5><a href="/">Home</a><a href="/meta-tag">Meta Tag Generator</a></div><div><h5>Community</h5><a href="https://github.com/interledger/webmonetization.org" target="_blank" rel="noreferrer noopener">GitHub</a><a href="https://forum.interledger.org" target="_blank" rel="noreferrer noopener">ILP Forum</a><a href="https://discourse.wicg.io/t/proposal-web-monetization-a-new-revenue-model-for-the-web/3785" target="_blank" rel="noreferrer noopener">Web Platform Incubator Community Group</a><a href="https://interledger.org" target="_blank" rel="noreferrer noopener">Interledger</a></div><div><h5>Resources</h5><a href="/docs/getting-started.html">Docs</a><a href="/specification.html" target="_blank" rel="noreferrer noopener">Specification</a><a href="https://paymentpointers.org" target="_blank" rel="noreferrer noopener">Payment Pointers</a></div></section><section class="copyright"></section></footer></div></body></html>
