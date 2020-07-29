@@ -76,40 +76,41 @@ currency.</p>
 <p>GateHub will assign a payment pointer to your wallet. A payment pointer is an identifier for your wallet that's safe to share with 3rd parties.</p>
 <ol>
 <li>Log in to your <a href="https://signin.gatehub.net">GateHub account</a>.</li>
-<li>Select <strong>Wallet</strong> from the left navigation bar.</li>
-<li>Click <strong>(+)</strong> in the upper-left.</li>
+<li>Click the wallet drop-down arrow in the upper-left.</li>
+<li>Click <strong>+Add wallet</strong>.</li>
+<li>Select <strong>Hosted</strong> wallet.</li>
 <li>Enter your password.</li>
-<li>Enter a wallet name and select <strong>Hosted</strong> under <strong>Wallet type</strong>.</li>
-<li>Click <strong>Create</strong>. Your wallet is now created on GateHub.</li>
-<li>Click <strong>Deposit/Receive</strong> at the bottom of the screen.</li>
-<li>Select the <strong>ILP</strong> tab and copy your payment pointer to your clipboard.</li>
+<li>Enter a wallet name and click <strong>Create</strong>. Your wallet is now created.</li>
+<li>Click <strong>Add Funds</strong>.</li>
+<li>Select <strong>Interledger Payment pointer</strong>, then copy your payment pointer.
+<blockquote>
+<p>Refresh the page if you don't see the Interledger option. This is shown in the screen capture below.</p>
+</blockquote></li>
 </ol>
 <p>Now you can share your payment pointer with other sites or add it to your own site by following the <a href="./getting-started">Quick Start Guide</a>.</p>
-<p><img src="/docs/assets/gatehub-01.png" alt="createwallet"></p>
+<p><img src="/docs/assets/gatehub-addwallet.gif" alt="addwallet"></p>
 <h2><a class="anchor" aria-hidden="true" id="find-your-payment-pointer"></a><a href="#find-your-payment-pointer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Find your payment pointer</h2>
 <ol>
 <li>Log in to your <a href="https://signin.gatehub.net">GateHub account</a>.</li>
-<li>Select <strong>Wallet</strong> from the left navigation bar.</li>
-<li>If needed, select your ILP wallet from the upper-left drop-down menu.</li>
-<li>Click <strong>Deposit/Receive</strong> at the bottom of the screen.</li>
-<li>Select the <strong>ILP</strong> tab and copy your payment pointer.</li>
+<li>If your Interledger wallet isn't selected by default, click the wallet drop-down arrow in the upper-left to select it.</li>
+<li>Click <strong>Add Funds</strong>.</li>
+<li>Select <strong>Interledger Payment pointer</strong>, then copy your payment pointer.</li>
 </ol>
-<p><img src="/docs/assets/gatehubfindpointer.gif" alt="findpointer"></p>
+<p><img src="/docs/assets/gatehub-findpointer.gif" alt="findpointer"></p>
 <h2><a class="anchor" aria-hidden="true" id="issue-an-exchange-order"></a><a href="#issue-an-exchange-order" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Issue an exchange order</h2>
 <p>Payments are deposited into your GateHub account as XRP. GateHub allows you to
-convert the XRP into another currency for no charge before making a withdrawal.</p>
+convert XRP into another currency for no charge before making a withdrawal.</p>
 <ol>
-<li><p>Log in to your <a href="https://signin.gatehub.net">GateHub account</a>.</p></li>
-<li><p>Select <strong>Exchange</strong> from the left navigation bar.</p></li>
-<li><p>Select your ILP wallet from the top-left menu.</p>
-<p><img src="/docs/assets/gatehub-02.png" alt="exchange1"></p></li>
-<li><p>Select your currency exchange pair (e.g., XRP to USD) from the drop-down menus.</p></li>
-<li><p>Enter the amount to exchange in the first field. The second field
-automatically displays the amount you'll receive.</p></li>
-<li><p>Click the <strong>Exchange</strong> button then confirm the transaction. When confirmed,
-the exchange takes place immediately.</p></li>
+<li>Log in to your <a href="https://signin.gatehub.net">GateHub account</a>.</li>
+<li>Select <strong>Exchange</strong> from the left navigation bar.</li>
+<li>If your Interledger wallet isn't selected by default, click the wallet drop-down arrow in the upper-left to select it.</li>
+<li>Select your currency exchange pair (e.g., XRP to USD) from the drop-down menus.</li>
+<li>Enter the amount to exchange in the <strong>You pay</strong> field. The <strong>You get</strong> field
+automatically displays the amount you'll receive.</li>
+<li>Click the <strong>Exchange</strong> button, then confirm the transaction. When confirmed,
+the exchange takes place immediately.</li>
 </ol>
-<p><img src="/docs/assets/gatehub-03.png" alt="exchange2"></p>
+<p><img src="/docs/assets/gatehub-exchangeorder.png" alt="exchangeorder"></p>
 <blockquote>
 <p>More information can be found in GateHub's help article: <a href="https://support.gatehub.net/hc/en-us/articles/360021425773-Exchange">https://support.gatehub.net/hc/en-us/articles/360021425773-Exchange</a></p>
 </blockquote>
