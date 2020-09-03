@@ -86,7 +86,7 @@ function inputChanged () {
 function generateReferrerLink (event) {
   event.preventDefault()
 
-  const generateBookmarklet = document.getElementById('generateBookmarklet').value
+  const generateBookmarklet = document.getElementById('generateBookmarklet').checked
   const paymentPointer = document.getElementById('paymentPointerInput').value
 
   const outputElem = document.getElementById('referrerOutput')
@@ -94,6 +94,11 @@ function generateReferrerLink (event) {
 
   const outputText = document.getElementById('referrerOutputText')
   const outputLink = document.getElementById('referrerOutputLink')
+
+  if (!paymentPointer) {
+    outputText.innerText = 'Error: payment pointer must be provided'
+    return
+  }
 
   if (generateBookmarklet) {
     outputText.innerText = 'Drag this link to your bookmarks bar (or right click this link and bookmark it) to install the bookmarklet. Click it while you\'re on any page to generate a link to the page including your wmref'    
@@ -111,10 +116,17 @@ function generateReferrerLink (event) {
     inputLink = document.getElementById('urlInput').value
 
     try {
+      console.log('input link', inputLink)
+
       const url = new URL(inputLink)
+      const search = new URLSearchParams(url.search)
+      search.append('wmref', paymentPointer)
+      url.search = search.toString()
+
+      outputLink.innerText = 'WM Referrer Link'
+      outputLink.href = url.href
     } catch (e) {
-      console.error(e)
+      outputText.innerText = 'Error: url is invalid'
     }
-    outputLink.innerText = 'WM Referrer Link'
   }
 }

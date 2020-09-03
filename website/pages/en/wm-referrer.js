@@ -49,12 +49,12 @@ function WmReferrer (props) {
         </p>
 
         <form id="referrerParamsForm">
-          <div>
+          <div className="referrerField">
             <label htmlFor="generateBookmarklet">Generate bookmarklet?</label>
             <input id="generateBookmarklet" type='checkbox' defaultChecked={false}/>
           </div>
 
-          <div>
+          <div className="referrerField">
             <label htmlFor="paymentPointerInput">Payment Pointer</label>
             <br />
             <input
@@ -65,7 +65,7 @@ function WmReferrer (props) {
             />
           </div>
 
-          <div id="urlInputContainer">
+          <div id="urlInputContainer" className="referrerField">
             <label htmlFor="urlInput">URL</label>
             <br />
             <input
@@ -76,9 +76,8 @@ function WmReferrer (props) {
             />
           </div>
 
-          <div>
-            <br />
-            <button id="generateButton">Generate Link</button>
+          <div className="referrerField">
+            <button id="generateButton" style={{ marginLeft: '0px' }}>Generate Link</button>
           </div>
         </form>
         <script dangerouslySetInnerHTML={{
