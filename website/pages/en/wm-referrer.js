@@ -4,18 +4,23 @@ const CompLibrary = require('../../core/CompLibrary.js')
 
 const Container = CompLibrary.Container
 
-function WmReferrer (props) {
-  const [ paymentPointer, setPaymentPointer ] = React.useState('')
-  const [ paymentPointerEntered, setPaymentPointerEntered ] = React.useState(false)
-  const [ url, setUrl ] = React.useState('')
+const scriptTag = `
+  document.getElementById('referrerParamsForm').onsubmit = generateReferrerLink
+  document.getElementById('generateBookmarklet').onclick = toggleUrlInputVisibility
+  document.getElementById('generateBookmarklet').checked = false
+  document.getElementById('paymentPointerInput').onchange = inputChanged
+  document.getElementById('urlInput').onchange = inputChanged
+`
 
-  console.log('rendering. paymentPointerEntered=' + paymentPointerEntered)
+function WmReferrer (props) {
+  const { config: siteConfig } = props
+  const { baseUrl } = siteConfig
 
   return (
     <div className="docMainWrapper wrapper">
       <Container className="mainContainer documentContainer metaTagContainer">
         <header className="postHeader">
-          <h1>Web Monetized Referrers</h1>
+          <h1>Web Monetized Referrer Tools</h1>
         </header>
 
         <p>
@@ -25,40 +30,63 @@ function WmReferrer (props) {
 
         <p>
           This tool lets you easily include your payment pointer when linking
-          to people's sites, so you can take advantage of this more easily. Enter your
-          payment pointer, and then you can either add it to a single link or create a
-          bookmarklet to easily link to any site.
+          to people's sites, so you can take advantage of this more easily.
         </p>
 
-        <form id="paymentPointerForm" onSubmit={(ev) => {
-          console.log('got form submit')
-          ev.preventDefault()
-          setPaymentPointerEntered(true)
-        }}>
-          <input
-            className="paymentPointerInput"
-            type="text"
-            placeholder="$YourPaymentPointer"
-            value={paymentPointer}
-            onChange={(ev) => setPaymentPointer(ev.target.value)}
-          />
-          <button id="generateButton" type="button" onClick={(ev) => {
-            ev.preventDefault()
-            setPaymentPointerEntered(true)
-          }}>Continue</button>
+        <h2>How to use this tool</h2>
 
-          {paymentPointerEntered && <input
-            className="paymentPointerInput"
-            type="text"
-            placeholder="Your outgoing link"
-            value={url}
-            onChange={(ev) => setUrl(ev.target.value)}
-          />}
+        <p>
+          Enter your payment pointer and a URL, and it will create a web monetized
+          referral link. If the page you're linking to supports web monetized referrals,
+          you'll get a cut of the revenue when people use your link.
+        </p>
+
+        <p>
+          To easily generate web monetized referral links for lots of sites,
+          check the 'generate bookmarklet' box. Install the bookmarklet and click it in
+          your bookmarks bar to generate a web monetized referral link for any site
+          you're visiting.
+        </p>
+
+        <form id="referrerParamsForm">
+          <div>
+            <label htmlFor="generateBookmarklet">Generate bookmarklet?</label>
+            <input id="generateBookmarklet" type='checkbox' defaultChecked={false}/>
+          </div>
+
+          <div>
+            <label htmlFor="paymentPointerInput">Payment Pointer</label>
+            <br />
+            <input
+              id="paymentPointerInput"
+              className="paymentPointerInput"
+              type="text"
+              placeholder="$YourPaymentPointer"
+            />
+          </div>
+
+          <div id="urlInputContainer">
+            <label htmlFor="urlInput">URL</label>
+            <br />
+            <input
+              id="urlInput"
+              className="paymentPointerInput"
+              type="text"
+              placeholder="http://example.com"
+            />
+          </div>
+
+          <div>
+            <br />
+            <button id="generateButton">Generate Link</button>
+          </div>
         </form>
-        <div className="metaTagOutput">
-          <p>
-            To monetize your website add the following &lt;meta&gt; tag to the &lt;head&gt; section of all pages on your website.
-          </p>
+        <script dangerouslySetInnerHTML={{
+          __html: scriptTag
+        }} />
+        <div id="referrerOutput" className="displayNone referrerOutput">
+          <p id="referrerOutputText"></p>
+          <a id="referrerOutputLink"></a>
         </div>
       </Container>
     </div>

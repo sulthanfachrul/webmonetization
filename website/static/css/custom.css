@@ -2,6 +2,11 @@
 h2 {
     font-size: 40px;
 }
+
+.displayNone {
+  display: none;
+}
+
 .fixedHeaderContainer {
   background: #000000;
 }
@@ -171,6 +176,11 @@ h2 {
     margin-bottom: 15px;
 }
 
+#referrerParamsForm {
+    margin-top: 50px;
+    margin-bottom: 15px;
+}
+
 .paymentPointerInput {
     height: 56px;
     color: #A4A8B1;
@@ -199,6 +209,10 @@ h2 {
 .metaTagOutput {
     margin-top: 50px;
     line-height: 2.5em;
+}
+
+.referrerOutput {
+    margin-top: 50px;
 }
 
 #metaTag {
