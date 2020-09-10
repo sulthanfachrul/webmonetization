@@ -60,38 +60,38 @@
 <h2><a class="anchor" aria-hidden="true" id="a-basic-example"></a><a href="#a-basic-example" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>A basic example</h2>
 <p>This example shows how to define a list of payment pointers and assign each pointer a weight. The easiest way to establish weight is by assigning values that add to 100.</p>
 <h3><a class="anchor" aria-hidden="true" id="code"></a><a href="#code" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Code</h3>
-<pre><code class="hljs css language-js">&lt;head&gt;
-  &lt;script&gt;
-    // Define your revenue share here.
-    // If these weights add to 100 then they represent the percent each pointer gets.
-    const pointers = {
-      '$alice.example': 50,
-      '$bob.example': 40,
-      '$connie.example': 9.5,
-      '$dave.example': 0.5
+<pre><code class="hljs css language-html"><span class="hljs-tag">&lt;<span class="hljs-name">head</span>&gt;</span>
+  <span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+    <span class="hljs-comment">// Define your revenue share here.</span>
+    <span class="hljs-comment">// If these weights add to 100 then they represent the percent each pointer gets.</span>
+    <span class="hljs-keyword">const</span> pointers = {
+      <span class="hljs-string">'$alice.example'</span>: <span class="hljs-number">50</span>,
+      <span class="hljs-string">'$bob.example'</span>: <span class="hljs-number">40</span>,
+      <span class="hljs-string">'$connie.example'</span>: <span class="hljs-number">9.5</span>,
+      <span class="hljs-string">'$dave.example'</span>: <span class="hljs-number">0.5</span>
     }
 
-    function pickPointer () {
-      const sum = Object.values(pointers).reduce((sum, weight) =&gt; sum + weight, 0)
-      let choice = Math.random() * sum
+    <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">pickPointer</span> (<span class="hljs-params"></span>) </span>{
+      <span class="hljs-keyword">const</span> sum = <span class="hljs-built_in">Object</span>.values(pointers).reduce(<span class="hljs-function">(<span class="hljs-params">sum, weight</span>) =&gt;</span> sum + weight, <span class="hljs-number">0</span>)
+      <span class="hljs-keyword">let</span> choice = <span class="hljs-built_in">Math</span>.random() * sum
 
-      for (const pointer in pointers) {
-        const weight = pointers[pointer]
-        if ((choice -= weight) &lt;= 0) {
-          return pointer
+      <span class="hljs-keyword">for</span> (<span class="hljs-keyword">const</span> pointer <span class="hljs-keyword">in</span> pointers) {
+        <span class="hljs-keyword">const</span> weight = pointers[pointer]
+        <span class="hljs-keyword">if</span> ((choice -= weight) &lt;= <span class="hljs-number">0</span>) {
+          <span class="hljs-keyword">return</span> pointer
         }
       }
     }
 
-    window.addEventListener('load', () =&gt; {
-      const monetizationTag = document.createElement('meta')
-      monetizationTag.name = 'monetization'
+    <span class="hljs-built_in">window</span>.addEventListener(<span class="hljs-string">'load'</span>, () =&gt; {
+      <span class="hljs-keyword">const</span> monetizationTag = <span class="hljs-built_in">document</span>.createElement(<span class="hljs-string">'meta'</span>)
+      monetizationTag.name = <span class="hljs-string">'monetization'</span>
       monetizationTag.content = pickPointer()
 
-      document.head.appendChild(monetizationTag)
+      <span class="hljs-built_in">document</span>.head.appendChild(monetizationTag)
     })
-  &lt;/script&gt;
-&lt;/head&gt;
+  </span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">head</span>&gt;</span>
 </code></pre>
 <h3><a class="anchor" aria-hidden="true" id="how-does-it-work"></a><a href="#how-does-it-work" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>How does it work?</h3>
 <p>First, we define the payment pointers and assign each one a weight. If the weights total 100, then they represent the percentage each pointer gets.</p>
