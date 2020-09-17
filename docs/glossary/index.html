@@ -1,125 +1,55 @@
-<!DOCTYPE html><html lang="en"><head><meta charSet="utf-8"/><meta http-equiv="X-UA-Compatible" content="IE=edge"/><title>Glossary · Web Monetization</title><meta name="viewport" content="width=device-width"/><meta name="generator" content="Docusaurus"/><meta name="description" content="# Monetized web page"/><meta name="docsearch:language" content="en"/><meta property="og:title" content="Glossary · Web Monetization"/><meta property="og:type" content="website"/><meta property="og:url" content="https://webmonetization.org/"/><meta property="og:description" content="# Monetized web page"/><meta property="og:image" content="https://webmonetization.org/img/undraw_online.svg"/><meta name="twitter:card" content="summary"/><link rel="shortcut icon" href="/img/fav-webmonetization.png"/><link rel="stylesheet" href="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.css"/><link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/atom-one-light.min.css"/><script type="text/javascript" src="https://buttons.github.io/buttons.js"></script><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script><script type="text/javascript" src="/js/custom.js"></script><script src="/js/scrollSpy.js"></script><link rel="stylesheet" href="/css/main.css"/><script src="/js/codetabs.js"></script></head><body class="sideNavVisible separateOnPageNav"><div class="fixedHeaderContainer"><div class="headerWrapper wrapper"><header><a href="/"><img class="logo" src="/img/wm-icon.svg" alt="Web Monetization"/><h2 class="headerTitleWithLogo">Web Monetization</h2></a><div class="navigationWrapper navigationSlider"><nav class="slidingNav"><ul class="nav-site nav-site-internal"><li class="siteNavGroupActive"><a href="/docs/getting-started" target="_self">Docs</a></li><li class=""><a href="/specification.html" target="_self">Specification</a></li><li class=""><a href="https://discourse.wicg.io/t/proposal-web-monetization-a-new-revenue-model-for-the-web/3785" target="_self">WICG Forum</a></li><li class=""><a href="https://github.com/WICG/webmonetization" target="_self">GitHub</a></li><li class="navSearchWrapper reactNavSearchWrapper"><input type="text" id="search_input_react" placeholder="Search" title="Search"/></li></ul></nav></div></header></div></div><div class="navPusher"><div class="docMainWrapper wrapper"><div class="docsNavContainer" id="docsNav"><nav class="toc"><div class="toggleNav"><section class="navWrapper wrapper"><div class="navBreadcrumb wrapper"><div class="navToggle" id="navToggler"><div class="hamburger-menu"><div class="line1"></div><div class="line2"></div><div class="line3"></div></div></div><h2><i>›</i><span>More</span></h2><div class="tocToggler" id="tocToggler"><i class="icon-toc"></i></div></div><div class="navGroups"><div class="navGroup"><h3 class="navGroupCategoryTitle">Overview</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/getting-started">Quick start guide</a></li><li class="navListItem"><a class="navItem" href="/docs/api">JavaScript API</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Examples</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/exclusive-content">Exclusive content</a></li><li class="navListItem"><a class="navItem" href="/docs/remove-ads">Remove ads</a></li><li class="navListItem"><a class="navItem" href="/docs/counter">Micropayment counter</a></li><li class="navListItem"><a class="navItem" href="/docs/probabilistic-rev-sharing">Probabilistic revenue sharing</a></li><li class="navListItem"><a class="navItem" href="/docs/start-stop">Start/stop monetization</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Explainer</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/explainer">Web Monetization</a></li><li class="navListItem"><a class="navItem" href="/docs/receiving">Receiving payments</a></li><li class="navListItem"><a class="navItem" href="/docs/sending">Sending payments</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">Wallets</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/ilp-wallets">Digital wallets and payment pointers</a></li><li class="navListItem"><a class="navItem" href="/docs/gatehub">GateHub</a></li><li class="navListItem"><a class="navItem" href="/docs/stronghold">Stronghold</a></li><li class="navListItem"><a class="navItem" href="/docs/uphold">Uphold</a></li><li class="navListItem"><a class="navItem" href="/docs/xrptipbot">XRP Tipbot</a></li></ul></div><div class="navGroup"><h3 class="navGroupCategoryTitle">More</h3><ul class=""><li class="navListItem"><a class="navItem" href="/docs/specification">Specification</a></li><li class="navListItem navListItemActive"><a class="navItem" href="/docs/glossary">Glossary</a></li><li class="navListItem"><a class="navItem" href="/docs/resources">External resources</a></li></ul></div></div></section></div><script>
-            var coll = document.getElementsByClassName('collapsible');
-            var checkActiveCategory = true;
-            for (var i = 0; i < coll.length; i++) {
-              var links = coll[i].nextElementSibling.getElementsByTagName('*');
-              if (checkActiveCategory){
-                for (var j = 0; j < links.length; j++) {
-                  if (links[j].classList.contains('navListItemActive')){
-                    coll[i].nextElementSibling.classList.toggle('hide');
-                    coll[i].childNodes[1].classList.toggle('rotate');
-                    checkActiveCategory = false;
-                    break;
-                  }
-                }
-              }
-
-              coll[i].addEventListener('click', function() {
-                var arrow = this.childNodes[1];
-                arrow.classList.toggle('rotate');
-                var content = this.nextElementSibling;
-                content.classList.toggle('hide');
-              });
-            }
-
-            document.addEventListener('DOMContentLoaded', function() {
-              createToggler('#navToggler', '#docsNav', 'docsSliderActive');
-              createToggler('#tocToggler', 'body', 'tocActive');
-
-              var headings = document.querySelector('.toc-headings');
-              headings && headings.addEventListener('click', function(event) {
-                var el = event.target;
-                while(el !== headings){
-                  if (el.tagName === 'A') {
-                    document.body.classList.remove('tocActive');
-                    break;
-                  } else{
-                    el = el.parentNode;
-                  }
-                }
-              }, false);
-
-              function createToggler(togglerSelector, targetSelector, className) {
-                var toggler = document.querySelector(togglerSelector);
-                var target = document.querySelector(targetSelector);
-
-                if (!toggler) {
-                  return;
-                }
-
-                toggler.onclick = function(event) {
-                  event.preventDefault();
-
-                  target.classList.toggle(className);
-                };
-              }
-            });
-        </script></nav></div><div class="container mainContainer docsContainer"><div class="wrapper"><div class="post"><header class="postHeader"><h1 id="__docusaurus" class="postHeaderTitle">Glossary</h1></header><article><div><span><h1><a class="anchor" aria-hidden="true" id="monetized-web-page"></a><a href="#monetized-web-page" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Monetized web page</h1>
-<hr>
-<p>A page on a monetized website that contains the necessary
-<a href="./explainer#add-lt-meta-gt-tag-to-website-header"><code>meta</code> tag</a> defining the
-page's receiving address (payment pointer).</p>
-<h1><a class="anchor" aria-hidden="true" id="payment-pointer"></a><a href="#payment-pointer" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Payment pointer</h1>
-<hr>
-<p>A secure URL that points to a payment initiation endpoint on the web. The
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="generator" content="Docusaurus v2.0.0-alpha.64">
+<link rel="search" type="application/opensearchdescription+xml" title="Web Monetization" href="/opensearch.xml">
+<script src="https://buttons.github.io/buttons.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+<script src="/js/custom.js"></script><title data-react-helmet="true">Glossary | Web Monetization</title><meta data-react-helmet="true" name="docsearch:version" content="current,latest"><meta data-react-helmet="true" name="twitter:card" content="summary_large_image"><meta data-react-helmet="true" property="og:title" content="Glossary | Web Monetization"><meta data-react-helmet="true" name="description" content="Monetized web page"><meta data-react-helmet="true" property="og:description" content="Monetized web page"><meta data-react-helmet="true" property="og:url" content="https://webmonetization.org/docs/glossary"><link data-react-helmet="true" rel="shortcut icon" href="/img/fav-webmonetization.png"><link data-react-helmet="true" rel="preconnect" href="https://BH4D9OD16A-dsn.algolia.net" crossorigin="true"><link data-react-helmet="true" rel="canonical" href="https://webmonetization.org/docs/glossary"><link rel="stylesheet" href="/styles.828b9a6c.css">
+<link rel="preload" href="/styles.3225789c.js" as="script">
+<link rel="preload" href="/runtime~main.3c68eee7.js" as="script">
+<link rel="preload" href="/main.ef8e2697.js" as="script">
+<link rel="preload" href="/1.f775fd84.js" as="script">
+<link rel="preload" href="/2.7244b736.js" as="script">
+<link rel="preload" href="/30.e44b6c4f.js" as="script">
+<link rel="preload" href="/33.4d9e8ce7.js" as="script">
+<link rel="preload" href="/935f2afb.838adc64.js" as="script">
+<link rel="preload" href="/17896441.225abbe1.js" as="script">
+<link rel="preload" href="/e747ec83.cb777709.js" as="script">
+</head>
+<body>
+<script>!function(){function t(t){document.documentElement.setAttribute("data-theme",t)}var e=function(){var t=null;try{t=localStorage.getItem("theme")}catch(t){}return t}();t(null!==e?e:"light")}()</script><div id="__docusaurus">
+<nav class="navbar navbar--fixed-top"><div class="navbar__inner"><div class="navbar__items"><div aria-label="Navigation bar toggle" class="navbar__toggle" role="button" tabindex="0"><svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 30 30" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></div><a class="navbar__brand" href="/"><img class="navbar__logo" src="/img/wm-icon.svg" alt="Web Monetization logo"><strong class="navbar__title">Web Monetization</strong></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" doc="getting-started" href="/docs">Docs</a><a href="https://webmonetization.org/specification.html" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">Specification</a><a href="https://discourse.wicg.io/t/proposal-web-monetization-a-new-revenue-model-for-the-web/3785" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">WICG Forum</a><a href="https://github.com/WICG/webmonetization" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub</a><a target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link"></a></div><div class="navbar__items navbar__items--right"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 20 20"><path d="M14.386 14.386l4.0877 4.0877-4.0877-4.0877c-2.9418 2.9419-7.7115 2.9419-10.6533 0-2.9419-2.9418-2.9419-7.7115 0-10.6533 2.9418-2.9419 7.7115-2.9419 10.6533 0 2.9419 2.9418 2.9419 7.7115 0 10.6533z" stroke="currentColor" fill="none" fill-rule="evenodd" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span><span class="DocSearch-Button-Key">⌘</span><span class="DocSearch-Button-Key">K</span></button></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div><div class="navbar-sidebar"><div class="navbar-sidebar__brand"><a class="navbar__brand" href="/"><img class="navbar__logo" src="/img/wm-icon.svg" alt="Web Monetization logo"><strong class="navbar__title">Web Monetization</strong></a></div><div class="navbar-sidebar__items"><div class="menu"><ul class="menu__list"><li class="menu__list-item"><a aria-current="page" class="menu__link navbar__link--active" doc="getting-started" href="/docs">Docs</a></li><li class="menu__list-item"><a href="https://webmonetization.org/specification.html" target="_blank" rel="noopener noreferrer" class="menu__link">Specification</a></li><li class="menu__list-item"><a href="https://discourse.wicg.io/t/proposal-web-monetization-a-new-revenue-model-for-the-web/3785" target="_blank" rel="noopener noreferrer" class="menu__link">WICG Forum</a></li><li class="menu__list-item"><a href="https://github.com/WICG/webmonetization" target="_blank" rel="noopener noreferrer" class="menu__link">GitHub</a></li><li class="menu__list-item"><a target="_blank" rel="noopener noreferrer" class="menu__link"></a></li></ul></div></div></div></nav><div class="main-wrapper"><div class="docPage_2gpo"><div class="docSidebarContainer_3_JD" role="complementary"><div class="sidebar_2urC"><div class="menu menu--responsive menu_5FrY"><button aria-label="Open Menu" aria-haspopup="true" class="button button--secondary button--sm menu__button" type="button"><svg aria-label="Menu" class="sidebarMenuIcon_Dm3K" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 32 32" role="img" focusable="false"><title>Menu</title><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><ul class="menu__list"><li class="menu__list-item menu__list-item--collapsed"><a class="menu__link menu__link--sublist" href="#!">Overview</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/getting-started">Quick start guide</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/api">JavaScript API</a></li></ul></li><li class="menu__list-item menu__list-item--collapsed"><a class="menu__link menu__link--sublist" href="#!">Examples</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/exclusive-content">Exclusive content</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/remove-ads">Remove ads</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/counter">Micropayment counter</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/probabilistic-rev-sharing">Probabilistic revenue sharing</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/start-stop">Start/stop monetization</a></li></ul></li><li class="menu__list-item menu__list-item--collapsed"><a class="menu__link menu__link--sublist" href="#!">Explainer</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/explainer">Web Monetization</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/receiving">Receiving payments</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/sending">Sending payments</a></li></ul></li><li class="menu__list-item menu__list-item--collapsed"><a class="menu__link menu__link--sublist" href="#!">Wallets</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/ilp-wallets">Digital wallets and payment pointers</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/gatehub">GateHub</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/stronghold">Stronghold</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/uphold">Uphold</a></li><li class="menu__list-item"><a class="menu__link" tabindex="-1" href="/docs/xrptipbot">XRP Tipbot</a></li></ul></li><li class="menu__list-item"><a class="menu__link menu__link--sublist menu__link--active" href="#!">More</a><ul class="menu__list"><li class="menu__list-item"><a class="menu__link" tabindex="0" href="/docs/specification">Specification</a></li><li class="menu__list-item"><a aria-current="page" class="menu__link menu__link--active active" tabindex="0" href="/docs/glossary">Glossary</a></li><li class="menu__list-item"><a class="menu__link" tabindex="0" href="/docs/resources">External resources</a></li></ul></li></ul></div></div></div><main class="docMainContainer_3EyW"><div class="container padding-vert--lg docItemWrapper_1EkI"><div class="row"><div class="col docItemCol_2ASc"><div class="docItemContainer_3QWW"><article><header><h1 class="docTitle_1Lrw">Glossary</h1></header><div class="markdown"><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="monetized-web-page"></a>Monetized web page<a aria-hidden="true" tabindex="-1" class="hash-link" href="#monetized-web-page" title="Direct link to heading">#</a></h1><hr><p>A page on a monetized website that contains the necessary
+<a href="/docs/explainer#add-lt-meta-gt-tag-to-website-header"><code>meta</code> tag</a> defining the
+page&#x27;s receiving address (payment pointer).</p><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="payment-pointer"></a>Payment pointer<a aria-hidden="true" tabindex="-1" class="hash-link" href="#payment-pointer" title="Direct link to heading">#</a></h1><hr><p>A secure URL that points to a payment initiation endpoint on the web. The
 payment pointer is provided by the Web Monetization receiver.
-See <a href="./explainer#payment-pointers">Payment pointers</a> for more info.</p>
-<h1><a class="anchor" aria-hidden="true" id="receiver"></a><a href="#receiver" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Receiver</h1>
-<hr>
-<p>The person with the receiving wallet account. Also see
-<a href="#web-monetization-receiver">Web Monetization receiver</a>.</p>
-<h1><a class="anchor" aria-hidden="true" id="sender"></a><a href="#sender" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Sender</h1>
-<hr>
-<p>The person with the sending wallet account. Also see
-<a href="#web-monetization-provider">Web Monetization provider</a>.</p>
-<h1><a class="anchor" aria-hidden="true" id="user-agent"></a><a href="#user-agent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>User agent</h1>
-<hr>
-<p>The user's web browser. In this context, the browser has implemented the
+See <a href="/docs/explainer#payment-pointers">Payment pointers</a> for more info.</p><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="receiver"></a>Receiver<a aria-hidden="true" tabindex="-1" class="hash-link" href="#receiver" title="Direct link to heading">#</a></h1><hr><p>The person with the receiving wallet account. Also see
+<a href="#web-monetization-receiver">Web Monetization receiver</a>.</p><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="sender"></a>Sender<a aria-hidden="true" tabindex="-1" class="hash-link" href="#sender" title="Direct link to heading">#</a></h1><hr><p>The person with the sending wallet account. Also see
+<a href="#web-monetization-provider">Web Monetization provider</a>.</p><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="user-agent"></a>User agent<a aria-hidden="true" tabindex="-1" class="hash-link" href="#user-agent" title="Direct link to heading">#</a></h1><hr><p>The user&#x27;s web browser. In this context, the browser has implemented the
 <a href="/docs/api">JavaScript API</a> and has an installed/registered Web Monetization
-agent.</p>
-<p>The terms <em>user agent</em> and <em>browser</em> are used interchangeably throughout the
-documentation.</p>
-<h1><a class="anchor" aria-hidden="true" id="web-monetization-agent"></a><a href="#web-monetization-agent" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web Monetization agent</h1>
-<hr>
-<p>A component or service, such as an extension, installed in a user agent
+agent.</p><p>The terms <em>user agent</em> and <em>browser</em> are used interchangeably throughout the
+documentation.</p><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="web-monetization-agent"></a>Web Monetization agent<a aria-hidden="true" tabindex="-1" class="hash-link" href="#web-monetization-agent" title="Direct link to heading">#</a></h1><hr><p>A component or service, such as an extension, installed in a user agent
 (browser). The Web Monetization agent determines which websites to pay and how
-much to pay them.</p>
-<h1><a class="anchor" aria-hidden="true" id="web-monetization-provider"></a><a href="#web-monetization-provider" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web Monetization provider</h1>
-<hr>
-<p>The digital entity (wallet) sending micropayments. Also referred to as the <em>Web
+much to pay them.</p><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="web-monetization-provider"></a>Web Monetization provider<a aria-hidden="true" tabindex="-1" class="hash-link" href="#web-monetization-provider" title="Direct link to heading">#</a></h1><hr><p>The digital entity (wallet) sending micropayments. Also referred to as the <em>Web
 Monetization sender</em>. See <a href="/docs/sending">Sending payments</a> for more
-information.</p>
-<h1><a class="anchor" aria-hidden="true" id="web-monetization-receiver"></a><a href="#web-monetization-receiver" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web Monetization receiver</h1>
-<hr>
-<p>The digital entity (wallet) receiving micropayments.
-See <a href="/docs/receiving">Receiving payments</a> and <a href="./ilp-wallet">ILP wallets</a> for
-more info.</p>
-<h1><a class="anchor" aria-hidden="true" id="web-monetization-session"></a><a href="#web-monetization-session" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Web Monetization session</h1>
-<hr>
-<p>Each page load or refresh is a unique session. The browser generates a
-<a href="./explainer#flow">unique session ID</a> which the website can use to correlate
-incoming payments to the Web Monetization receiver to a client-side context.</p>
-<h1><a class="anchor" aria-hidden="true" id="receipt-verifier"></a><a href="#receipt-verifier" aria-hidden="true" class="hash-link"><svg class="hash-link-icon" aria-hidden="true" height="16" version="1.1" viewBox="0 0 16 16" width="16"><path fill-rule="evenodd" d="M4 9h1v1H4c-1.5 0-3-1.69-3-3.5S2.55 3 4 3h4c1.45 0 3 1.69 3 3.5 0 1.41-.91 2.72-2 3.25V8.59c.58-.45 1-1.27 1-2.09C10 5.22 8.98 4 8 4H4c-.98 0-2 1.22-2 2.5S3 9 4 9zm9-3h-1v1h1c1 0 2 1.22 2 2.5S13.98 12 13 12H9c-.98 0-2-1.22-2-2.5 0-.83.42-1.64 1-2.09V6.25c-1.09.53-2 1.84-2 3.25C6 11.31 7.55 13 9 13h4c1.45 0 3-1.69 3-3.5S14.5 6 13 6z"></path></svg></a>Receipt Verifier</h1>
-<hr>
-<p>A service operated by the monetized website or third party that verifies
+information.</p><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="web-monetization-receiver"></a>Web Monetization receiver<a aria-hidden="true" tabindex="-1" class="hash-link" href="#web-monetization-receiver" title="Direct link to heading">#</a></h1><hr><p>The digital entity (wallet) receiving micropayments.
+See <a href="/docs/receiving">Receiving payments</a> and <a href="/docs/ilp-wallets">ILP wallets</a> for
+more info.</p><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="web-monetization-session"></a>Web Monetization session<a aria-hidden="true" tabindex="-1" class="hash-link" href="#web-monetization-session" title="Direct link to heading">#</a></h1><hr><p>Each page load or refresh is a unique session. The browser generates a
+<a href="/docs/explainer#flow">unique session ID</a> which the website can use to correlate
+incoming payments to the Web Monetization receiver to a client-side context.</p><h1><a aria-hidden="true" tabindex="-1" class="anchor enhancedAnchor_2cZh" id="receipt-verifier"></a>Receipt Verifier<a aria-hidden="true" tabindex="-1" class="hash-link" href="#receipt-verifier" title="Direct link to heading">#</a></h1><hr><p>A service operated by the monetized website or third party that verifies
 payment receipts issued by the Web Monetization receiver and emitted to the
-web page by the User agent during a session.</p>
-</span></div></article></div><div class="docs-prevnext"><a class="docs-prev button" href="/docs/specification"><span class="arrow-prev">← </span><span>Specification</span></a><a class="docs-next button" href="/docs/resources"><span>External resources</span><span class="arrow-next"> →</span></a></div></div></div><nav class="onPageNav"></nav></div><footer class="nav-footer" id="footer"><section class="sitemap"><div><h5>WebMonetization.org</h5></div><div><h5>Navigation</h5><a href="/">Home</a><a href="/meta-tag">Meta Tag Generator</a></div><div><h5>Community</h5><a href="https://github.com/WICG/webmonetization" target="_blank" rel="noreferrer noopener">GitHub</a><a href="https://forum.interledger.org" target="_blank" rel="noreferrer noopener">ILP Forum</a><a href="https://discourse.wicg.io/t/proposal-web-monetization-a-new-revenue-model-for-the-web/3785" target="_blank" rel="noreferrer noopener">Web Platform Incubator Community Group</a><a href="https://interledger.org" target="_blank" rel="noreferrer noopener">Interledger</a></div><div><h5>Resources</h5><a href="/docs/getting-started.html">Docs</a><a href="/specification.html" target="_blank" rel="noreferrer noopener">Specification</a><a href="https://paymentpointers.org" target="_blank" rel="noreferrer noopener">Payment Pointers</a></div></section><section class="copyright"></section></footer></div><script type="text/javascript" src="https://cdn.jsdelivr.net/docsearch.js/1/docsearch.min.js"></script><script>
-                document.addEventListener('keyup', function(e) {
-                  if (e.target !== document.body) {
-                    return;
-                  }
-                  // keyCode for '/' (slash)
-                  if (e.keyCode === 191) {
-                    const search = document.getElementById('search_input_react');
-                    search && search.focus();
-                  }
-                });
-              </script><script>
-              var search = docsearch({
-                
-                apiKey: '522665321749697a7b612bb54dbdb0b4',
-                indexName: 'webmonetization',
-                inputSelector: '#search_input_react'
-              });
-            </script></body></html>
+web page by the User agent during a session.</p></div></article><div class="margin-vert--xl"><div class="row"><div class="col"><a href="https://github.com/WICG/webmonetization/tree/master/docs/glossary.md" target="_blank" rel="noreferrer noopener"><svg fill="currentColor" height="1.2em" width="1.2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 40 40" style="margin-right:0.3em;vertical-align:sub"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div></div></div><div class="margin-vert--lg"><nav class="pagination-nav" aria-label="Blog list page navigation"><div class="pagination-nav__item"><a class="pagination-nav__link" href="/docs/specification"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">« Draft Web Monetization Specification</div></a></div><div class="pagination-nav__item pagination-nav__item--next"><a class="pagination-nav__link" href="/docs/resources"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">External Resources »</div></a></div></nav></div></div></div><div class="col col--3"><div class="tableOfContents_3SO_"></div></div></div></div></main></div></div><footer class="footer"><div class="container"><div class="row footer__links"><div class="col footer__col"><h4 class="footer__title">WebMonetization.org</h4></div><div class="col footer__col"><h4 class="footer__title">Navigation</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/">Home</a></li><li class="footer__item"><a class="footer__link-item" href="/meta-tag">Meta Tag Generator</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">Community</h4><ul class="footer__items"><li class="footer__item"><a href="https://github.com/WICG/webmonetization" target="_blank" rel="noopener noreferrer" class="footer__link-item">Github</a></li><li class="footer__item"><a href="https://forum.interledger.org" target="_blank" rel="noopener noreferrer" class="footer__link-item">ILP Forum</a></li><li class="footer__item"><a href="https://discourse.wicg.io/t/proposal-web-monetization-a-new-revenue-model-for-the-web/3785" target="_blank" rel="noopener noreferrer" class="footer__link-item">Web Platform Incubator Community Group</a></li><li class="footer__item"><a href="https://interledger.org" target="_blank" rel="noopener noreferrer" class="footer__link-item">Interledger</a></li></ul></div><div class="col footer__col"><h4 class="footer__title">Resources</h4><ul class="footer__items"><li class="footer__item"><a class="footer__link-item" href="/docs/getting-started">Docs</a></li><li class="footer__item"><a href="https://webmonetization.org/specification.html" target="_blank" rel="noopener noreferrer" class="footer__link-item">Specification</a></li><li class="footer__item"><a href="https://paymentpointers.org/" target="_blank" rel="noopener noreferrer" class="footer__link-item">Payment Pointers</a></li></ul></div></div><div class="text--center"><div></div></div></div></footer></div>
+<script src="/styles.3225789c.js"></script>
+<script src="/runtime~main.3c68eee7.js"></script>
+<script src="/main.ef8e2697.js"></script>
+<script src="/1.f775fd84.js"></script>
+<script src="/2.7244b736.js"></script>
+<script src="/30.e44b6c4f.js"></script>
+<script src="/33.4d9e8ce7.js"></script>
+<script src="/935f2afb.838adc64.js"></script>
+<script src="/17896441.225abbe1.js"></script>
+<script src="/e747ec83.cb777709.js"></script>
+</body>
+</html>
